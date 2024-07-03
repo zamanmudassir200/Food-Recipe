@@ -1,0 +1,5 @@
+.active {
+  background-color: rgba(255, 0, 0, 0.466);
+  padding: 4px 10px;
+  border-radius: 10px;
+}

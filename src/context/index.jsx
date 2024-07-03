@@ -46,6 +46,7 @@ export const GlobalState = ({ children }) => {
       copyFavList.splice(index);
     }
     setFavoritesList(copyFavList);
+    navigate("/favorites");
   };
   console.log(favoritesList);
 

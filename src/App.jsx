@@ -7,18 +7,16 @@ import Navbar from "./components/navbar/Navbar";
 
 function App() {
   return (
-    <>
-      <div className="">
-        <div className="min-h-screen p-6 bg-white text-gray-600 text-lg">
-          <Navbar />
-          <Routes>
-            <Route to="/" element={<Home />} />
-            <Route to="/favorites" element={<Favorites />} />
-            <Route to="/recipe-item/:id" element={<Details />} />
-          </Routes>
-        </div>
+    <div className="">
+      <div className="min-h-screen p-6 text-gray-600 text-lg">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/recipe-item/:id" element={<Details />} />
+        </Routes>
       </div>
-    </>
+    </div>
   );
 }
 

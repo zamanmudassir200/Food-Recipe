@@ -13,23 +13,27 @@ export const GlobalState = ({ children }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      setLoading(true);
-      const response = await fetch(
-        `https://forkify-api.herokuapp.com/api/v2/recipes?search=${search}`
-      );
-      const data = await response.json();
-      if (data?.data?.recipes) {
-        setRecipeList(data?.data?.recipes);
-        setLoading(false);
+    if (search.trim() !== "") {
+      try {
+        setLoading(true);
+        const response = await fetch(
+          `https://forkify-api.herokuapp.com/api/v2/recipes?search=${search}`
+        );
+        const data = await response.json();
+        if (data?.data?.recipes) {
+          setRecipeList(data?.data?.recipes);
+          setLoading(false);
+          setSearch("");
+          navigate("/");
+        }
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+        setErrMsg(error.message);
         setSearch("");
-        navigate("/");
       }
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-      setErrMsg(error.message);
-      setSearch("");
+    } else {
+      alert("Please enter something");
     }
   };
   const handleAddToFav = (getCurrItem) => {
